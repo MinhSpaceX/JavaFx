@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="502.0" prefWidth="516.0" style="-fx-pref-width: 300; -fx-background-color: white; -fx-pref-height: 500;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Chat">
+   <children>
+      <ScrollPane fx:id="scroll_pane" layoutY="57.0" prefHeight="399.0" prefWidth="300.0" style="-fx-hbar-policy: never;">
+         <content>
+            <VBox fx:id="vBox" prefHeight="0.0" prefWidth="286.0" style="-fx-padding: 5 0 5 0;" />
+         </content>
+      </ScrollPane>
+      <AnchorPane layoutY="451.0" maxHeight="107.0" prefHeight="107.0" prefWidth="200.0" style="-fx-pref-width: 300; -fx-max-width: 300; -fx-max-height: 50; -fx-pref-height: 75; -fx-background-color: red;">
+         <children>
+            <ImageView fitHeight="26.0" fitWidth="17.0" layoutX="44.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@camera.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="15.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@plus.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="17.0" layoutX="73.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@galery.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="message" layoutX="106.0" layoutY="17.0" prefHeight="26.0" prefWidth="159.0" promptText=" Message" style="-fx-background-radius: 20;" />
+            <ImageView fx:id="likeButton" fitHeight="26.0" fitWidth="17.0" layoutX="275.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" styleClass="like">
+               <image>
+                  <Image url="@like.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane maxHeight="58.0" prefHeight="58.0" prefWidth="200.0" style="-fx-pref-width: 300; -fx-max-width: 300; -fx-max-height: 57; -fx-pref-height: 75; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0, 10, 0);">
+         <children>
+            <Circle fx:id="avatar" fill="RED" layoutX="56.0" layoutY="28.0" radius="19.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="86.0" layoutY="16.0" prefHeight="18.0" prefWidth="70.0" style="-fx-font-family: Segoe UI; -fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 16; -fx-opacity: 0.85;" text="GPT-4" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

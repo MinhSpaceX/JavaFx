@@ -1,0 +1,84 @@
+.message_send {
+    -fx-font-family: Segoe UI;
+    -fx-font-size: 16;
+    -fx-text-fill: black;
+    -fx-background-color:#F1F1F1;
+    -fx-background-radius: 50;
+    -fx-padding: 0 15 0 15;
+    -fx-pref-height: 37;
+}
+
+.message_receive {
+    -fx-font-family: Segoe UI;
+    -fx-font-size: 16;
+    -fx-text-fill: black;
+    -fx-background-color: grey;
+    -fx-background-radius: 50;
+    -fx-padding: 0 15 0 15;
+    -fx-pref-height: 37;
+}
+
+.h-box {
+    -fx-pref-height: 47;
+    -fx-spacing: 10;
+    -fx-alignment: center-right;
+    -fx-padding: 10 0 5 0;
+}
+
+.h-box-rec {
+    -fx-pref-height: 47;
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+    -fx-padding: 10 0 5 10;
+}
+
+.like {
+
+}
+.like:hover {
+    -fx-cursor: hand;
+}
+
+
+.scroll-pane {
+    -fx-background-color: white;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: white;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-padding: 0;
+    -fx-pref-width: 10;
+    -fx-opacity: 0.3;
+}
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #888888;
+}
+
+.scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color: #555555;
+    -fx-opacity: 0.5;
+}
+
+.scroll-pane .scroll-bar .thumb:pressed {
+    -fx-background-color: #333333;
+    -fx-opacity: 0.5;
+}
+
+.scroll-pane .scroll-bar .track {
+    -fx-background-color: transparent;
+    -fx-opacity: 0.5;
+}
+
+.scroll-pane .scroll-bar:vertical:hover,
+.scroll-pane .scroll-bar:vertical:pressed,
+.scroll-pane .scroll-bar:vertical:focused {
+    -fx-opacity: 1;
+}
