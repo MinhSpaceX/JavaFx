@@ -1,35 +1,36 @@
 .message_send {
+    -fx-background-color: grey;
+    -fx-background-radius: 20;
+    -fx-padding: 10;
+}
+
+.text {
     -fx-font-family: Segoe UI;
     -fx-font-size: 16;
     -fx-text-fill: black;
-    -fx-background-color:#F1F1F1;
-    -fx-background-radius: 50;
-    -fx-padding: 0 15 0 15;
-    -fx-pref-height: 37;
 }
 
 .message_receive {
-    -fx-font-family: Segoe UI;
-    -fx-font-size: 16;
-    -fx-text-fill: black;
-    -fx-background-color: grey;
-    -fx-background-radius: 50;
-    -fx-padding: 0 15 0 15;
-    -fx-pref-height: 37;
+    -fx-background-color: #F1F1F1;
+    -fx-background-radius: 20;
+    -fx-padding: 10;
 }
 
 .h-box {
-    -fx-pref-height: 47;
     -fx-spacing: 10;
-    -fx-alignment: center-right;
+    -fx-alignment: bottom-right;
     -fx-padding: 10 0 5 0;
 }
 
 .h-box-rec {
-    -fx-pref-height: 47;
     -fx-spacing: 10;
-    -fx-alignment: center-left;
+    -fx-alignment: bottom-left;
     -fx-padding: 10 0 5 10;
+}
+
+.text-field {
+    -fx-focus-color: #CFD3D3;
+    -fx-faint-focus-color: #CFD3D322;
 }
 
 .like {

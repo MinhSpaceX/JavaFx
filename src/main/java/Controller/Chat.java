@@ -17,14 +17,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 
+import javax.swing.text.LabelView;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 public class Chat implements Initializable {
     @FXML
@@ -41,9 +46,9 @@ public class Chat implements Initializable {
     ImageView likeButton;
     Image img_tick;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        vBox.heightProperty().addListener(o -> scroll_pane.setVvalue(1));
         Image img = null;
         Image like = null;
         try {
@@ -70,40 +75,78 @@ public class Chat implements Initializable {
     }
 
     void send() {
+        vBox.setPrefHeight(1000 + vBox.getHeight());
+        vBox.getParent().layout();
         ImageView tick = new ImageView();
         tick.setImage(img_tick);
         tick.setFitWidth(20);
         tick.setFitHeight(20);
-        Label msg_send = new Label();
-        msg_send.getStyleClass().add("message_send");
+        Text msg_send = new Text();
+        msg_send.getStyleClass().add("text");
         msg_send.setText(message.getText());
+
+
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().add(msg_send);
+        stackPane.getStyleClass().add("message_send");
+        stackPane.widthProperty().addListener(observable -> {
+            if (stackPane.getWidth() > 200) {
+                msg_send.setWrappingWidth(200);
+            }
+        });
         HBox hBox = new HBox();
         hBox.getStyleClass().add("h-box");
-        hBox.setAlignment(Pos.CENTER_RIGHT);
-        hBox.getChildren().addAll(msg_send, tick);
+        hBox.getChildren().addAll(stackPane, tick);
+
         vBox.getChildren().add(hBox);
         message.clear();
-        vBox.setPrefHeight(vBox.getPrefHeight() + hBox.getHeight());
-        vBox.heightProperty().addListener(observable -> scroll_pane.setVvalue(1));
+        Platform.runLater(() -> {
+            vBox.getParent().layout();
+            long height = 0;
+            for (Node node : vBox.getChildren()) {
+                height += (long) node.getBoundsInLocal().getHeight();
+            }
+            vBox.setPrefHeight(height);
+            vBox.layout();
+        });
     }
 
 
     void receive() {
+        vBox.setPrefHeight(1000 + vBox.getHeight());
+        vBox.getParent().layout();
         ImageView tick = new ImageView();
         tick.setImage(img_tick);
         tick.setFitWidth(20);
         tick.setFitHeight(20);
-        Label msg_send = new Label();
-        msg_send.getStyleClass().add("message_send");
-        msg_send.setText("I don't understand");
+        Text msg_send = new Text();
+        msg_send.getStyleClass().add("text");
+        msg_send.setText("I don't know.");
+
+
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().add(msg_send);
+        stackPane.getStyleClass().add("message_receive");
+        stackPane.widthProperty().addListener(observable -> {
+            if (stackPane.getWidth() > 200) {
+                msg_send.setWrappingWidth(200);
+            }
+        });
         HBox hBox = new HBox();
         hBox.getStyleClass().add("h-box-rec");
-        hBox.setAlignment(Pos.CENTER_LEFT);
-        hBox.getChildren().addAll(tick, msg_send);
+        hBox.getChildren().addAll(tick, stackPane);
+
         vBox.getChildren().add(hBox);
         message.clear();
-        vBox.setPrefHeight(vBox.getPrefHeight() + hBox.getHeight());
-        vBox.heightProperty().addListener(observable -> scroll_pane.setVvalue(1));
+        Platform.runLater(() -> {
+            vBox.getParent().layout();
+            long height = 0;
+            for (Node node : vBox.getChildren()) {
+                height += (long) node.getBoundsInLocal().getHeight();
+            }
+            vBox.setPrefHeight(height);
+            vBox.layout();
+        });
     }
     void sendLike() {
         likeButton.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
